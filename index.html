@@ -1,0 +1,78 @@
+<html>
+
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script src="gree.js"></script>
+  </head>
+
+  <form>
+
+    <label>
+      Fan speed
+      <select id="fanspeed">
+        <option value="00" selected>Auto</option>
+        <option value="10">Low</option>
+        <option value="20">Medium</option>
+        <option value="30">High</option>
+      </select>
+    </label>
+    <br>
+
+    <label>
+      Operating mode
+      <select id="operatingmode">
+        <option value="00" selected>Auto</option>
+        <option value="01">Cool</option>
+        <option value="02">Dry</option>
+        <option value="03">Fan</option>
+        <option value="04">Heat</option>
+      </select>
+    </label>
+    <br>
+
+    Power mode
+    <label>
+      <input type="radio" name="powermode" id="poweron" value="08" checked>
+      On
+    </label>
+    <label>
+      <input type="radio" name="powermode" id="poweroff" value="00">
+      Off
+    </label>
+    <br>
+
+    Sleep mode
+    <label>
+      <input type="radio" name="sleepmode" id="sleepon" value="80">
+      On
+    </label>
+    <label>
+      <input type="radio" name="sleepmode" id="sleepoff" value="00" checked>
+      Off
+    </label>
+    <br>
+
+    Swing mode
+    <label>
+      <input type="radio" name="swingmode" id="swingon" value="40">
+      On
+    </label>
+    <label>
+      <input type="radio" name="swingmode" id="swingoff" value="00" checked>
+      Off
+    </label>
+    <br>
+
+    <label>
+      Temperature
+      <input type="number" id="temperature" min="16" max="30" value="21">
+    </label>
+    <br>
+
+    <button type="button" onclick="sendGree()">Set</button>
+
+  </form>
+</html>
