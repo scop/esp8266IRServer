@@ -175,6 +175,18 @@ void handleIr(){
       server.send(200, "text/html", webOutput);
       irsend.sendSAMSUNG(code, bits);
     }
+    else if (protocol == "Gree"){
+      server.send(200, "text/html", webOutput);
+      // TODO length checks
+      unsigned char bytes[8];
+      char temp[] = "0x00";
+      for (int i = 0; i < codestring.length(); i += 2) {
+        temp[2] = codestring.charAt(i);
+        temp[3] = codestring.charAt(i+1);
+        bytes[i/2] = strtol(temp, NULL, 16);
+      }
+      irsend.sendGree(bytes);
+    }
     else {
       server.send(404, "text/html", "Protocol not implemented!");
     }
