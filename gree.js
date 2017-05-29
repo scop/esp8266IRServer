@@ -20,6 +20,8 @@ function sendGree()
         (data[7] & 0xF0) >> 4 +
         0x0A) & 0xF0;
 
+    var bits = 64;
+
     for (var i = 0; i < data.length; i++) {
         data[i] = data[i].toString(16);
         if (data[i].length === 1)
@@ -31,7 +33,7 @@ function sendGree()
     $.post(url, {
         code: data.join(""),
         protocol: "Gree",
-        bits: 0 // Unused for Gree
+        bits: bits
     })
         .done(function(res) {
             alert("Success: " + res);
