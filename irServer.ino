@@ -370,6 +370,7 @@ void learnHandler(){
       case WHYNTER:      proto=("Whynter");       break ;
      // case AIWA_RC_T501: Serial.print("AIWA_RC_T501");  break ;
       case PANASONIC:    proto=("PANASONIC");     break ;
+      case GREE:         proto=("Gree");          break ;
     }
     //results->value
     //Serial.print(results->value, HEX);
