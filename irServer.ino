@@ -2,6 +2,7 @@
 //#include <WiFiClient.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
+#include <IRrecv.h>
 #include <IRsend.h>
 #include <DNSServer.h>            //Local DNS Server used for redirecting all requests to the configuration portal
 #include <WiFiManager.h>          //https://github.com/tzapu/WiFiManager WiFi Configuration Magic
@@ -201,13 +202,13 @@ void handleIr(){
     //just pumping all 
     int spacing=5;
     int len= pronto.length();
-    int out_len =((len-4)/spacing)-3;
-    unsigned int prontoCode[out_len];
+    uint16_t out_len =((len-4)/spacing)-3;
+    uint16_t prontoCode[out_len];
     unsigned long timeperiod;
     unsigned long multiplier = .241246 ;
 
     int pos=0;
-    unsigned long hz;
+    uint16_t hz;
     if (pronto.substring(pos,4) != "0000"){
       server.send(404,"text/html","unknown pronto format!");
       //unknown pronto format
@@ -375,7 +376,8 @@ void learnHandler(){
     
     Serial.println("Here");           // Blank line between entries
     irrecv.resume();              // Prepare for the next value
-    String output=callback+"({protocol:\""+proto+"\", value:\""+String(results.value,HEX)+"\", bits:\""+String(results.bits)+"\"})";
+    //String output=callback+"({protocol:\""+proto+"\", value:\""+String(results.value,HEX)+"\", bits:\""+String(results.bits)+"\"})";
+    String output=callback+"({protocol:\""+proto+"\", value:\""+"TODO:uint64_t"+"\", bits:\""+String(results.bits)+"\"})";
     Serial.println(output);
     server.send(200, "text/html", output);
   }
